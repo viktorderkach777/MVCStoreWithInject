@@ -18,5 +18,14 @@ namespace DataAccessLayer
                 .Distinct()
                 .Count();
         }
-   }
+
+        public ICollection<Country> GetCountriesByConcreteMark(string concreteMark)
+        {
+            return ctx.Concretes
+                .Where(c => c.Mark == concreteMark)
+                .Select(p => p.Producer.Country)
+                .Distinct()
+               .ToList();
+        }
+    }
 }

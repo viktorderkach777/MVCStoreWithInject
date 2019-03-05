@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessProjectLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace Store.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly MyBll bll = new MyBll();
+
         public ActionResult Index()
         {
             return View();
@@ -15,6 +18,8 @@ namespace Store.Controllers
 
         public ActionResult About()
         {
+            var result = bll.GetProducersCountByConcreteMark(); 
+
             ViewBag.Message = "Your application description page.";
 
             return View();
