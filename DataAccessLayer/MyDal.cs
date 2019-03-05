@@ -18,5 +18,5 @@ namespace DataAccessLayer
                 .Distinct()
                 .Count();
         }
-    }
+   }
 }
