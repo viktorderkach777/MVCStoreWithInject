@@ -1,4 +1,5 @@
 ﻿using BusinessProjectLayer;
+using Store.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,18 +19,34 @@ namespace Store.Controllers
 
         public ActionResult About()
         {
-            var result = bll.GetProducersCountByConcreteMark(); 
-
-            ViewBag.Message = "Your application description page.";
+            //string mark = "sdd";
+           
 
             return View();
         }
 
+        [HttpPost]
+        public ActionResult About(AboutViewModel model)
+        {            
+            var result = bll.GetProducersCountByConcreteMark(model.ConcreteMark);
+            model.Quantity = result;          
+
+            return View(model);
+        }
+
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(ContactViewModel model)
+        {
+            model.Countries = bll.GetCountriesByConcreteMark(model.ConcreteMark);
+
+            return View(model);
         }
     }
 }

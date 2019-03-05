@@ -1,7 +1,25 @@
-﻿@{
+﻿@using Store.Models
+
+@model AboutViewModel
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+
+
+@using (Html.BeginForm())
+{
+    @Html.EditorFor(m => m.ConcreteMark)
+    <br>
+    <input type="submit" value="Get countries Qty" />
+}
+<br />
+
+@if (Model != null)
+{
+    <p>Countries Quantity @Html.DisplayFor(m => m.Quantity)</p>
+
+
+}
 
 <p>Use this area to provide additional information.</p>

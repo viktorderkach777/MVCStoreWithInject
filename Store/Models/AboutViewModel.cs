@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Store
+namespace Store.Models
 {
     public class AboutViewModel
     {
-         public int MyProperty { get; set; }
+         public string ConcreteMark { get; set; }
+
+        public int Quantity { get; set; }
     }
 }
