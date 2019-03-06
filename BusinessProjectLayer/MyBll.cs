@@ -8,9 +8,14 @@ using System.Threading.Tasks;
 
 namespace BusinessProjectLayer
 {
-    public class MyBll
+    public class MyBll : IMyBll
     {
-        private readonly MyDal dal = new MyDal();
+        private readonly IMyDal dal;// = new MyDal();
+
+        public MyBll(IMyDal dal)
+        {
+            this.dal = dal;
+        }
 
         public int GetProducersCountByConcreteMark(string concreteMark)
         {

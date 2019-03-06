@@ -10,7 +10,12 @@ namespace Store.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly MyBll bll = new MyBll();
+        private readonly IMyBll bll; 
+
+        public HomeController(IMyBll bll)
+        {
+            this.bll = bll;
+        }
 
         public ActionResult Index()
         {
