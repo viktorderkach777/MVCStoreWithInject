@@ -56,13 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concrete.cs" />
-    <Compile Include="ConcreteMarket.cs" />
-    <Compile Include="Country.cs" />
-    <Compile Include="CustomInitializer.cs" />
+    <Compile Include="Models\TouristApp.cs" />
+    <Compile Include="Models\CustomInitializer.cs" />
     <Compile Include="IMyDal.cs" />
+    <Compile Include="Models\DALPlace.cs" />
     <Compile Include="MyDal.cs" />
-    <Compile Include="Producer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

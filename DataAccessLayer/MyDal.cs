@@ -9,29 +9,37 @@ namespace DataAccessLayer
 {
    public class MyDal : IMyDal
     {
-        private readonly DbContext ctx;// = new ConcreteMarket();
+        private readonly DbContext ctx;
 
         public MyDal(DbContext ctx)
         {
             this.ctx = ctx;
         }
+        
 
-        public int GetProcersCountByConcreteMark(string concreteMark)
+        public ICollection<DALPlace> GetDBPlacesByAllParams(string icon, string openTime, string closeTime, string rate)
         {
-            return ctx.Set<Concrete>()
-                .Where(c => c.Mark == concreteMark)
-                .Select(p => p.Producer)
-                .Distinct()
-                .Count();
+            if (icon == null)
+            {
+                return ctx.Set<DALPlace>().ToList();
+            }
+
+            if (!string.IsNullOrEmpty(openTime) && !string.IsNullOrEmpty(closeTime) && !string.IsNullOrEmpty(rate))
+            {
+                int startTime = int.Parse(openTime);
+                int finishTime = int.Parse(closeTime);
+                int currentRate = int.Parse(rate);
+
+                if (icon == "all")
+                {                   
+                    return ctx.Set<DALPlace>().Where(p => p.OpenTime <= startTime && p.CloseTime >= finishTime && p.Rate >= currentRate).ToList();
+                }
+
+                return ctx.Set<DALPlace>().Where(p => p.OpenTime <= startTime && p.CloseTime >= finishTime && p.Icon == icon && p.Rate >= currentRate).ToList();
+            }
+
+            return null;
         }
 
-        public ICollection<Country> GetCountriesByConcreteMark(string concreteMark)
-        {
-            return ctx.Set<Concrete>()
-                .Where(c => c.Mark == concreteMark)
-                .Select(p => p.Producer.Country)
-                .Distinct()
-               .ToList();
-        }
     }
 }

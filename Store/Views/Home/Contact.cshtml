@@ -1,43 +1,46 @@
 ﻿
-@using Store.Models
-
-@model ContactViewModel
 @{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
 
 
-@using (Html.BeginForm())
-{
-    @Html.EditorFor(m => m.ConcreteMark)
-    <br>
-    <input type="submit" value="Get countries Qty" />
-}
-<br />
+<div id="content">
 
-@if (Model != null)
-{
-<table>
-    <thead>
-        <tr>
-            <td>Id</td>
-            <td>Name</td>
-            <td>ProducersIds</td>
-        </tr>
-    </thead>
-    @foreach (var item in Model.Countries)
-    {
-    <tr>
-        <td>@item.Id</td>
-        <td>@item.Name</td>
-        <td>@item.ProducersId.Select(id=>id.ToString()).Aggregate("",(prev,next)=>prev + " "+ next)</td>
-    </tr>
-    }
-</table>
-   
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
 
+            <button type="button" id="sidebarCollapse" class="navbar-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-align-justify"></i>
+            </button>
 
-}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Sign out
+                            @*@Html.ActionLink("Home", "Index", "Home")*@
+                        </a>
+                    </li>
+                    @*<li class="nav-item">
+                            <a class="nav-link" href="#" >
+                                @Html.ActionLink("About", "About", "Home")
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" >
+                                @Html.ActionLink("Contact", "Contacts", "Home")
+                            </a>
+                        </li>*@
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<p>Use this area to provide additional information.</p>
+    <div id='map' data-counter="0"></div>
+</div>
+

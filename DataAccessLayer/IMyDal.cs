@@ -4,7 +4,6 @@ namespace DataAccessLayer
 {
     public interface IMyDal
     {
-        ICollection<Country> GetCountriesByConcreteMark(string concreteMark);
-        int GetProcersCountByConcreteMark(string concreteMark);
+        ICollection<DALPlace> GetDBPlacesByAllParams(string icon, string openTime, string closeTime, string rate);
     }
 }

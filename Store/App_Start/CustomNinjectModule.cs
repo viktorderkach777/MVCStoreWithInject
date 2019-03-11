@@ -13,7 +13,7 @@ namespace Store
 
             Bind<IMyDal>().To<MyDal>();
 
-            Bind<DbContext>().To<ConcreteMarket>();
+            Bind<DbContext>().To<TouristApp>();
 
         }
     }

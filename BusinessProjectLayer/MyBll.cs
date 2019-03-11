@@ -10,28 +10,32 @@ namespace BusinessProjectLayer
 {
     public class MyBll : IMyBll
     {
-        private readonly IMyDal dal;// = new MyDal();
+        private readonly IMyDal dal;
 
         public MyBll(IMyDal dal)
         {
             this.dal = dal;
         }
+       
 
-        public int GetProducersCountByConcreteMark(string concreteMark)
+        public ICollection<PlaceBll> GetDBPlacesByAllParams(string icon, string openTime, string closeTime, string rate)
         {
-            return dal.GetProcersCountByConcreteMark(concreteMark);
-        }
-
-        public ICollection<CountryBll> GetCountriesByConcreteMark(string concreteMark)
-        {
-            return dal.GetCountriesByConcreteMark(concreteMark)
-                .Select(c => new CountryBll
-                {
-                    Id = c.Id,
-                    Name = c.Name,
-                    ProducersId = c.Producers.Select(p => p.Id).ToList()
-                }).ToList();
-           
+            return dal.GetDBPlacesByAllParams(icon, openTime, closeTime, rate)
+               .Select(c => new PlaceBll
+               {
+                   Id = c.Id,
+                   Name = c.Name,
+                   LinkRef = c.LinkRef,
+                   LinkText = c.LinkText,
+                   AboutPlace = c.AboutPlace,
+                   OpenTime = c.OpenTime,
+                   CloseTime = c.CloseTime,
+                   Rate = c.Rate,
+                   Icon = c.Icon,
+                   Longitude = c.Longitude,
+                   Latitude= c.Latitude
+                   
+               }).ToList();
         }
     }
 }

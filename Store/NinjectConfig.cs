@@ -1,6 +1,4 @@
-﻿using System;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Ninject;
 using Ninject.Modules;
 using Ninject.Web.Mvc;

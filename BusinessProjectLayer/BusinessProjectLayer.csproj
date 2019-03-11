@@ -47,10 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="CountryBll.cs" />
     <Compile Include="IMyBll.cs" />
     <Compile Include="MyBll.cs" />
+    <Compile Include="Models\PlaceBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
