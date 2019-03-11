@@ -186,13 +186,14 @@
     <footer>
         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
     </footer>
-
+    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/mySideBar")
+    @Scripts.Render("~/bundles/unobtrusive-ajax")
 
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoiZGVya2FjaCIsImEiOiJjanFjdWFzeGozejZnNDNvYmpsbXR1azJzIn0.03a1jcE5orWtncfaDCxuPA';
@@ -269,7 +270,7 @@
                 let arrayElem = data[j];
 
                 let descr = `<strong>${arrayElem.Name}</strong><p>${arrayElem.LinkRef}${arrayElem.LinkText}</a>${arrayElem.AboutPlace}</p><p>${arrayElem.OpenTime}-${arrayElem.CloseTime}</p>
-                        ${SetStars(arrayElem.Rate)}`;
+                                ${SetStars(arrayElem.Rate)}`;
 
                 let ob = {
                     "type": "Feature",
