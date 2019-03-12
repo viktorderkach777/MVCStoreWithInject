@@ -211,18 +211,61 @@
             zoom: myZoom // starting zoom
         });
 
-        TouristMap.addControl(new MapboxDirections({
+        //TouristMap.addControl(new MapboxDirections({
+        //    accessToken: mapboxgl.accessToken,
+        //    unit: 'metric'
+        //}), 'top-left');
+
+        //TouristMap.getCanvas().style.cursor = 'pointer';
+
+        //$('input:radio[name="id"]').change(
+        //    function () {
+        //        if ($(this).is(':checked') && $(this).val() == 'all') {
+        //            // append goes here
+        //            console.log("fhjgjh");
+        //        }
+        //    });
+
+        let directs = new MapboxDirections({
             accessToken: mapboxgl.accessToken,
             unit: 'metric'
-        }), 'top-left');
+        })
+        
+        //TouristMap.addControl(directs, 'top-left');
 
         TouristMap.getCanvas().style.cursor = 'pointer';
+        //TouristMap.getCanvas().style.
 
         $('input:radio[name="id"]').change(
             function () {
                 if ($(this).is(':checked') && $(this).val() == 'all') {
                     // append goes here
-                    console.log("fhjgjh");
+                    console.log("all");
+                    //TouristMap.removeControl(directs);
+                    try {
+                        console.log("try all");
+                        TouristMap.removeControl(directs);
+                    }
+                    catch (e) {
+
+                    }
+
+                    //TouristMap.removeControl(directs);
+                }
+
+                if ($(this).is(':checked') && $(this).val() == 'museum') {
+                    // append goes here
+                    console.log("museum");
+
+                    try {
+                        console.log("try museum");
+                        TouristMap.addControl(directs, 'top-left');
+                    }
+                    catch (e) {
+
+                    }
+
+                    //TouristMap.removeControl(directs);
                 }
             });
 
